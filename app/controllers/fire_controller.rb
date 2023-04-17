@@ -1,7 +1,8 @@
 class FireController < ApplicationController
   def ram
-    @horoscope = "As your professional dreams unfold, Aries, you may worry about the downside. First, there are new responsibilities that you might doubt your ability to fulfill. Second, you might be catapulted into an uncomfortable new realm of office politics. Don't let these matters put a damper on your enthusiasm. You have what it takes to fulfill the first concern and the wisdom to avoid the second.
-     Onward and upward."
+    all_zodiacs = Zodiac.list
+    this_zodiac = all_zodiacs.fetch(:aries)
+    @horoscope = this_zodiac.fetch(:horoscope)
     
     @array_of_numbers = Array.new
 
@@ -14,7 +15,7 @@ class FireController < ApplicationController
     render({ :template => "flame_templates/aries.html.erb" })
   end
 
-  def lion
+    def lion
     @horoscope = "Success on all levels is filling your life and making you feel absolutely wonderful, Leo. The downside of this is that you might be a little too conscientious. Are you putting in a lot of extra hours? Be discriminating about this and don't work harder than necessary. You could get stressed to the point of taxing your strength too much, and that won't help you. Pace yourself."
     
     @array_of_numbers = Array.new
